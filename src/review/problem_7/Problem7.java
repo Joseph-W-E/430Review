@@ -19,7 +19,7 @@ public class Problem7 {
     * }
     *
     * a) Describe two distinct ways in which this code fails.
-    * b) What if the variable count was declared volatile?
+    * b) What if the variable dataCount was declared volatile?
     * */
 
     /**
