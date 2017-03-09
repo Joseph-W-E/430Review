@@ -25,7 +25,7 @@ public class Problem7 {
     /**
      * Implementation of a blocking queue with fixed size.
      */
-    public class BoundedBuffer
+    private class BoundedBuffer
     {
         /**
          * Elements in the buffer

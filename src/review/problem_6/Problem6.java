@@ -21,7 +21,7 @@ public class Problem6 {
      * to "slipped conditions" (due to using 'if' instead of 'while') and potential
      * deadlock (due to using notify() instead of notifyAll()).
      */
-    public class BoundedBufferStillWrong
+    private class BoundedBufferStillWrong
     {
         /**
          * Elements in the buffer
