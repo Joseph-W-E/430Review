@@ -13,7 +13,7 @@ public class Problem7 {
     * Suppose we add the method:
     *
     * public T peek() {
-    *   if (count == 0)
+    *   if (dataCount == 0)
     *       throw new NoSuchElementException();
     *   return elements[getIndex];
     * }
