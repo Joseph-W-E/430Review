@@ -12,7 +12,6 @@ public class Problem6 {
     * How does it violate Rule 4?
     * Give a concrete scenario in which this code fails.
     * */
-    
 
     /**
      * INCORRECT Implementation of a blocking queue with fixed size using
@@ -66,7 +65,7 @@ public class Problem6 {
                 // Wait if the buffer is full.
                 if (dataCount == queue.length)
                 {
-                    wait();
+                    wait(); // hint
                 }
 
                 // Write the data.
@@ -96,7 +95,7 @@ public class Problem6 {
                 // Wait if the buffer is empty
                 if( dataCount == 0 )
                 {
-                    wait();
+                    wait(); // hint
                 }
 
                 // Read the next data, wrap the index around if necessary
