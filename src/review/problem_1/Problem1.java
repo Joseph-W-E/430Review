@@ -1,6 +1,5 @@
 package review.problem_1;
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
@@ -12,41 +11,62 @@ public class Problem1 {
 
         String[] data = { "one", "two", "three" };
 
-        Problem1 problem1 = new Problem1();
+        /* PROBLEM 1 a */
 
-        Future<String> result1 = problem1.doTheThingAsyncThread(data);
+        BetterThing betterThing = new BetterThing();
 
-        if (result1 == null || !result1.get().equals("1 2 3")) {
-            throw new Exception("result1 failed");
+        Future<String> result = betterThing.doThingAsync(data);
+
+        if (result != null) {
+            System.out.println(String.format(
+                    "Got result %s",
+                    result.get()
+            ));
         }
 
-        Future<String> result2 = problem1.doTheThingAsyncExecutorServiceCallable(data);
+        /* PROBLEM 1 b */
 
-        if (result2 == null || !result2.get().equals("1 2 3")) {
-            throw new Exception("result2 failed");
+        CustomCallback customCallback = new CustomCallback();
+
+        AlsoAGoodThing alsoAGoodThing = new AlsoAGoodThing();
+
+        alsoAGoodThing.doThingAsync(data, customCallback);
+
+        while (!customCallback.ready());
+
+        System.out.println(String.format(
+                "Gor result %s",
+                customCallback.getResult()
+        ));
+    }
+
+    private static class Thing {
+        public String doThing(String[] args) throws InterruptedException {
+            Thread.sleep(1000);
+            return "potato";
         }
-
     }
 
-    /* PROBLEM 1 */
-
-    /*
-    * For testing, do this:
-    *   Input: { "one", "two", "three" }
-    *   Output: "1 2 3"
-    * In other words, given an array of Strings where the elements are english version of numbers,
-    * output a String of those numbers in numerical form, separated by spaces.
-    * Assume that the numbers will only be between 0 and 10.
-    * */
-
-    // Use a plain vanilla Thread to perform the operation asynchronously
-    private Future<String> doTheThingAsyncThread(String[] args) {
-        throw new UnsupportedOperationException();
+    /**
+     * PROBLEM 1 a
+     *
+     * Implement BetterThing.doThingAsync() to return a Future holding the result from Thing.doThing()
+     */
+    private static class BetterThing extends Thing {
+        public Future<String> doThingAsync(String[] args) {
+            return null;
+        }
     }
 
-    // Use an ExecutorService and a Callable<String>
-    private Future<String> doTheThingAsyncExecutorServiceCallable(String[] args) {
-        throw new UnsupportedOperationException();
-    }
+    /**
+     * PROBLEM 1 b
+     *
+     * Implement AlsoAGoodThing.doThingAsync() to send the output of Thing.doThing() to the callback class.
+     */
 
+    private static class AlsoAGoodThing {
+        public String doThingAsync(String[] args, IAsyncCallback callback) {
+            return null;
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package review.problem_2;
+package review.problem_1;
 
 /**
  * Created by jellio on 3/8/2017.
